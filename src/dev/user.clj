@@ -122,6 +122,8 @@
            "(.-success ant-notification)"
            "(.-warn ant-notification)"
            "(.-warning ant-notification)"]}
+   {:class "PageHeader"
+    :path  "page-header"}
    {:class "Pagination"
     :path  "pagination"}
    {:class "Popconfirm"
@@ -138,10 +140,10 @@
     :path  "rate"}
    {:class "Row"
     :path  "row"}
-   {:class "Select"
-    :path  "select"
-    :inner ["OptGroup"
-            "Option"]
+   {:class  "Select"
+    :path   "select"
+    :inner  ["OptGroup"
+             "Option"]
     :suffix "(defn ant-select-option [id-fn label-fn option]
   ^{:key (str \"antd-option-\" (id-fn option))}
   [select-option
@@ -195,6 +197,9 @@
    {:class "TreeSelect"
     :path  "tree-select"
     :inner ["TreeNode"]}
+   {:class "Typography"
+    :path  "typography"
+    :inner ["Text" "Title" "Paragraph"]}
    {:class "Upload"
     :path  "upload"}])
 
