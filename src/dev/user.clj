@@ -71,7 +71,23 @@
     :path  "input"
     :inner ["Group"
             "Search"
-            "TextArea"]}
+            "TextArea"]
+    :suffix "(defn change-on-blur [{:keys [value]}]
+  (let [external-value (reagent.core/atom value)
+        internal-value (reagent.core/atom (if (nil? @external-value) \"\" @external-value))]
+    (fn [{:keys [value on-change on-blur] :as element}]
+      (when (not= @external-value value)
+        (reset! external-value value)
+        (reset! internal-value value))
+
+      [input
+       (assoc element
+         :on-change (fn [e]
+                      (reset! internal-value (.. e -target -value)))
+         :on-blur (fn []
+                    (when (not= @internal-value @external-value)
+                      (reset! external-value @internal-value)
+                      ((or on-blur on-change) @internal-value))))])))"}
    {:class "InputNumber"
     :path  "input-number"}
    {:class "Layout"

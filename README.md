@@ -4,7 +4,7 @@ A shadow-cljs friendly reagent wrapper around Ant Design components.
 
 ## Using
 
-1. Add to your dependencies, `[syn-antd "1.0.0"]`
+1. Add to your dependencies, `[syn-antd "1.0.1"]`
 2. Add the version of ant design you're targeting to your `shadow-cljs.edn`
 3. Make sure you reference the appropriate antd css file somewhere in your HTML
 4. Reference the namespace you need and use as a standard Reagent component
