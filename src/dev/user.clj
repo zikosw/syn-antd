@@ -75,12 +75,14 @@
     :suffix "(defn change-on-blur [{:keys [value]}]
   (let [external-value (reagent.core/atom value)
         internal-value (reagent.core/atom (if (nil? @external-value) \"\" @external-value))]
-    (fn [{:keys [value on-change on-blur] :as element}]
+    (fn [{:keys [value on-change on-blur input-type]
+          :as   element
+          :or   {input-type input}}]
       (when (not= @external-value value)
         (reset! external-value value)
         (reset! internal-value value))
 
-      [input
+      [input-type
        (assoc element
          :on-change (fn [e]
                       (reset! internal-value (.. e -target -value)))
