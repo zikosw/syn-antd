@@ -1,4 +1,4 @@
-(defproject syn-antd "1.0.1"
+(defproject syn-antd "1.0.2"
   :description "Ant Design Reagent Wrapper - Optimised for shadow-cljs"
   :min-lein-version "2.7.0"
 
@@ -19,7 +19,8 @@
                                   :passphrase    :env/aws_access_key}}
 
   :profiles {:jar {}
-             :dev {:jvm-opts     ["-XX:-OmitStackTraceInFastThrow"]
+             :dev {:source-paths ["src/dev"]
+                   :jvm-opts     ["-XX:-OmitStackTraceInFastThrow"]
                    :dependencies [[thheller/shadow-cljs "2.8.14"]
                                   [org.clojure/tools.namespace "0.3.0-alpha4"]
                                   [org.clojure/tools.nrepl "0.2.13"]
