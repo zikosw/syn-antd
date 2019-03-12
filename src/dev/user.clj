@@ -105,7 +105,8 @@
             "Sider"]}
    {:class "List"
     :path  "list"
-    :inner ["Item"]}
+    :inner ["Item"
+            ["Item" "Meta"]]}
    {:class "LocaleProvider"
     :path  "locale-provider"}
    {:class "Mention"
@@ -254,6 +255,12 @@
        "    [\"" path "\" :default " default-name "]))\n\n"
        rest-of-file))
 
+(defn innerify [base [s & rest-s]]
+  (if s
+    (innerify (str "(.-" s " " base ")")
+             rest-s)
+    base))
+
 (defn gen-factories! []
   (doseq [{:keys [class path inner fns suffix]} ant]
     (let [filename  (str "src/syn_antd/" (module-name->snake-case (or class path)) ".cljs")
@@ -265,7 +272,10 @@
                           [(define-reagent-component class default)])
                         (when (some? inner)
                           (map #(define-reagent-component (str class "." %)
-                                                          (str "(.-" % " " default ")")) inner))
+                                                          (if (coll? %)
+                                                            (innerify default %)
+                                                            (innerify default [%])
+                                                            #_(str "(.-" % " " default ")"))) inner))
                         (when (some? fns)
                           (map define-fn fns))
                         (when (some? suffix)
