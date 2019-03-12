@@ -86,6 +86,7 @@
 
       [input-type
        (assoc element
+         :value @internal-value
          :on-change (fn [& args]
                       (reset! internal-value (apply change-value-extract-fn args)))
          :on-blur (fn []
