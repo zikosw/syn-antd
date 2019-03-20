@@ -8,7 +8,7 @@ Using cljsjs antd leads to bloated compiled JS file since antd is a very large l
 
 If antd components are properly referenced, shadow-cljs helps handle the tree-shaking, reducing your package size to only the components you use.
 
-CAVEAT: antd-icons is still a gigantic mess that's completely required in. This is a known issue the Ant Design team is working on.
+CAVEAT: antd-icons is still a gigantic mess that's completely required in. This is a known issue the [Ant Design team is working on](https://github.com/ant-design/ant-design/issues/12011).
 
 ## Using
 
@@ -35,6 +35,8 @@ To build for a new version of Ant Design.
 ## Example shadow-cljs setup
 
 shadow-cljs can be a bit daunting. Here's an example of a basic project configuration for shadow-cljs.edn and package.json with syn-antd setup.
+
+The documentation has gotten a lot better in recent months, and you should [refer to it for further development](https://shadow-cljs.github.io/docs/UsersGuide.html).
 
 ### shadow-cljs.edn
 
