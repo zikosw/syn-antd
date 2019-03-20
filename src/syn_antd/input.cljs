@@ -30,7 +30,6 @@
                       (reset! internal-value (apply change-value-extract-fn args)))
          :on-blur (fn []
                     (when (not= @internal-value @external-value)
-                      (reset! external-value @internal-value)
                       ((or on-blur on-change) @internal-value))))])))
 
 (def change-on-blur input-change-on-blur)
