@@ -1,5 +1,7 @@
 # syn-antd
 
+[![Clojars Project](https://img.shields.io/clojars/v/syn-antd.svg)](https://clojars.org/syn-antd)
+
 A shadow-cljs friendly reagent wrapper around Ant Design components.
 
 ## Purpose
@@ -12,7 +14,7 @@ CAVEAT: antd-icons is still a gigantic mess that's completely required in. This 
 
 ## Using
 
-1. Add to your dependencies, `[syn-antd "1.0.4"]`
+1. Add to your dependencies the latest version (see badge at top)
 2. Add the version of ant design you're targeting to your `shadow-cljs.edn`
 3. Make sure you reference the appropriate antd css file somewhere in your HTML
 4. Reference the namespace you need and use as a standard Reagent component
