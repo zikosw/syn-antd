@@ -260,6 +260,7 @@
              rest-s)
     base))
 
+;; Inspiration taken from https://github.com/fulcrologic/semantic-ui-wrapper
 (defn gen-factories! []
   (doseq [{:keys [class path inner fns suffix]} ant]
     (let [filename  (str "src/syn_antd/" (module-name->snake-case (or class path)) ".cljs")
@@ -273,13 +274,11 @@
                           (map #(define-reagent-component (str class "." %)
                                                           (if (coll? %)
                                                             (innerify default %)
-                                                            (innerify default [%])
-                                                            #_(str "(.-" % " " default ")"))) inner))
+                                                            (innerify default [%]))) inner))
                         (when (some? fns)
                           (map define-fn fns))
                         (when (some? suffix)
                           [suffix])))]
       (make-parents filename)
       (spit (as-file filename)
-            (factory-ns-shadow (or class path) (str "antd/es/" path) default file-body (some? class)))))
-  )
+            (factory-ns-shadow (or class path) (str "antd/es/" path) default file-body (some? class))))))

@@ -2,7 +2,7 @@
 
 [![Clojars Project](https://img.shields.io/clojars/v/syn-antd.svg)](https://clojars.org/syn-antd)
 
-A shadow-cljs friendly reagent wrapper around Ant Design components.
+A [shadow-cljs](http://shadow-cljs.org/) friendly [reagent](https://github.com/reagent-project/reagent) wrapper around [Ant Design](https://ant.design/docs/react/introduce) components.
 
 ## Purpose
 
@@ -19,6 +19,38 @@ CAVEAT: antd-icons is still a gigantic mess that's completely required in. This 
 3. Make sure you reference the appropriate antd css file somewhere in your HTML
 4. Reference the namespace you need and use as a standard Reagent component
 
+## Some syn-antd unique features
+
+### input-change-on-blur
+
+In Synqrinus' systems a commonly used pattern is to delay executing on-change until you blur, but state can be managed externally.
+
+Under `syn-antd.input` we have a wrapper that can go around any antd input. The API is identical to whichever antd input you are using with one addition. You can specify the antd input via the `:input-type` key. If not specified, it defaults to [input](https://ant.design/components/input/)
+
+### ant-options
+
+Populating options can be a bit of a chore with antd. We've tried to make this a bit simpler via ant-options. Here is an example usage below.
+
+```clojure
+[select/select
+  {:allow-clear true
+   :mode        "multiple"
+   :placeholder "My placeholder text"
+   :on-change   (fn [selected]
+                  (dispatch [:editor/my-update-fn selected]))
+   :value       @my-selected-value}
+  (select/ant-options
+    {:options  @my-options
+     :id-fn    :what-an-id
+     :label-fn :name})]
+```
+
+ant-options receives three possible keys: `:options`, `:id-fn`, `:label-fn`. `:options` is a required collection of options to populate, and `:id-fn` and `:label-fn` are optionally used to extract the labels and ids of the options.
+
+### dataSource caveat
+
+Any references to `dataSource` in the antd docs **must** follow the formatting convention. Whereas for many other keys you can use kebab-case, you **must** use camel case for `dataSource` to work properly.
+
 ## Building
 
 To build for a new version of Ant Design.
@@ -33,6 +65,14 @@ To build for a new version of Ant Design.
 2. `npm install -g less-plugin-clean-css` (if not exists)
 3. Create your theme in `/less`. See current folder for working example of synqrinus-theme
 4. Execute `lessc --js less/antd.main.less > <YOUR THEME>-antd.css --clean-css`
+
+## Contributing
+
+syn-antd is pretty bare-bones and doesn't need to have many more bells-and-whistles in my opinion, but I'm still very happy to receive contributions. 
+
+PRs are welcome for any **additional wrappers to antd** that are missing, as well as any **example projects** that use syn-antd and show users how to get it started with shadow-cljs.
+
+We also welcome **bug fixes** for any custom elements to syn-antd such as `input-change-on-blur`, and `ant-options`, as well as suggestions or PRs for new custom elements. That said, the goal is to minimize the amount of custom utilities present in this library. Any major quality of life improvements will be accepted, but others are encouraged to go in a separate library
 
 ## Example shadow-cljs setup
 
@@ -88,5 +128,23 @@ The documentation has gotten a lot better in recent months, and you should [refe
     "react-dom": "16.8.3"
   }
 }
-
 ```
+
+To install shadow-cljs on your dev machine:
+`npm install -g shadow-cljs`
+
+Before building/etc: `yarn install` (or whatever flavour of js build tooling is in this month)
+
+To build: `shadow-cljs compile app`
+
+To watch and hot-reload: `shadow-cljs watch app`
+
+To release: `shadow-cljs release app`
+
+To generate a build report: `shadow-cljs run shadow.cljs.build-report app report.html`
+
+## License
+
+Copyright © 2019 Synqrinus
+
+Distributed under the [MIT License](https://opensource.org/licenses/MIT).
