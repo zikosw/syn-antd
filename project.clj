@@ -1,4 +1,4 @@
-(defproject syn-antd "1.0.4-SNAPSHOT2"
+(defproject syn-antd "1.0.4"
   :description "Ant Design Reagent Wrapper - Optimised for shadow-cljs"
   :min-lein-version "2.7.0"
 
