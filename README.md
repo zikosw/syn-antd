@@ -21,12 +21,6 @@ CAVEAT: antd-icons is still a gigantic mess that's completely required in. This 
 
 ## Some syn-antd unique features
 
-### input-change-on-blur
-
-In Synqrinus' systems a commonly used pattern is to delay executing on-change until you blur, but state can be managed externally.
-
-Under `syn-antd.input` we have a wrapper that can go around any antd input. The API is identical to whichever antd input you are using with one addition. You can specify the antd input via the `:input-type` key. If not specified, it defaults to [input](https://ant.design/components/input/)
-
 ### ant-options
 
 Populating options can be a bit of a chore with antd. We've tried to make this a bit simpler via ant-options. Here is an example usage below.
@@ -72,7 +66,7 @@ syn-antd is pretty bare-bones and doesn't need to have many more bells-and-whist
 
 PRs are welcome for any **additional wrappers to antd** that are missing, as well as any **example projects** that use syn-antd and show users how to get it started with shadow-cljs.
 
-We also welcome **bug fixes** for any custom elements to syn-antd such as `input-change-on-blur`, and `ant-options`, as well as suggestions or PRs for new custom elements. That said, the goal is to minimize the amount of custom utilities present in this library. Any major quality of life improvements will be accepted, but others are encouraged to go in a separate library
+We also welcome **bug fixes** for any custom elements to syn-antd such as `ant-options`, as well as suggestions or PRs for new custom elements. That said, the goal is to minimize the amount of custom utilities present in this library. Any major quality of life improvements will be accepted, but others are encouraged to go in a separate library
 
 ## Example shadow-cljs setup
 
