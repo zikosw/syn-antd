@@ -18,6 +18,36 @@ CAVEAT: antd-icons is still a gigantic mess that's completely required in. This 
 2. Add the version of ant design you're targeting to your `shadow-cljs.edn`
 3. Make sure you reference the appropriate antd css file somewhere in your HTML
 4. Reference the namespace you need and use as a standard Reagent component
+5. If using input fields, you may notice some cursor jumping with advanced optimizations enabled. If so, use the following disgusting shim/hack:
+
+```clojure
+(js/goog.exportSymbol "AutoComplete" ant-auto-complete)
+(.defineProperty js/Object js/AutoComplete "name" #js {"value" "AutoComplete"})
+
+(js/goog.exportSymbol "Input" ant-input)
+(.defineProperty js/Object js/Input "name" #js {"value" "Input"})
+
+(js/goog.exportSymbol "TextArea" (.-TextArea ant-input))
+(.defineProperty js/Object js/TextArea "name" #js {"value" "TextArea"})
+
+(js/goog.exportSymbol "Search" (.-Search ant-input))
+(.defineProperty js/Object js/Search "name" #js {"value" "Search"})
+
+
+(set! syn-antd.auto-complete/auto-complete (reagent.core/adapt-react-class js/AutoComplete))
+(set! syn-antd.input/input (reagent.core/adapt-react-class js/Input))
+(set! syn-antd.input/input-text-area (reagent.core/adapt-react-class js/TextArea))
+(set! syn-antd.input/input-search (reagent.core/adapt-react-class js/Search))
+
+(set! reagent.impl.template/input-component?
+      (fn [x]
+        (or (= x "input")
+            (= x "textarea")
+            (= (reagent.interop/$ x :name) "TextArea")
+            (= (reagent.interop/$ x :name) "Input")
+            (= (reagent.interop/$ x :name) "AutoComplete")
+            (= (reagent.interop/$ x :name) "Search"))))
+```
 
 ## Some syn-antd unique features
 
