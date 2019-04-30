@@ -15,7 +15,5 @@
                    :jvm-opts     ["-XX:-OmitStackTraceInFastThrow"]
                    :dependencies [[thheller/shadow-cljs "2.8.14"]
                                   [org.clojure/tools.namespace "0.3.0-alpha4"]
-                                  [org.clojure/tools.nrepl "0.2.13"]
-                                  [cider/piggieback "0.3.10"]]
-                   :repl-options {:init-ns          user
-                                  :nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}})
+                                  [org.clojure/tools.nrepl "0.2.13"]]
+                   :repl-options {:init-ns user}}})
