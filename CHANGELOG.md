@@ -1,3 +1,7 @@
+# 1.1.1-1
+
+- Undo changes from `1.1.1`
+
 # 1.1.1
 
 - Work around async/sync change handling in react leading to cursor wonkiness with reagent. NOTE: Fairly hacky, can still be improved to more general form.
