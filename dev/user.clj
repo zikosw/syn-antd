@@ -13,7 +13,19 @@
    {:class "AutoComplete"
     :path  "auto-complete"
     :inner ["OptGroup"
-            "Option"]}
+            "Option"]
+    :suffix "(js/goog.exportSymbol \"AutoComplete\" ant-auto-complete)
+(.defineProperty js/Object js/AutoComplete \"name\" #js {\"value\" \"AutoComplete\"})
+(set! syn-antd.auto-complete/auto-complete (reagent.core/adapt-react-class js/AutoComplete))
+
+(set! reagent.impl.template/input-component?
+      (fn [x]
+        (or (= x \"input\")
+            (= x \"textarea\")
+            (= (reagent.interop/$ x :name) \"TextArea\")
+            (= (reagent.interop/$ x :name) \"Input\")
+            (= (reagent.interop/$ x :name) \"AutoComplete\")
+            (= (reagent.interop/$ x :name) \"Search\"))))"}
    {:class "Avatar"
     :path  "avatar"}
    {:class "BackTop"
@@ -71,7 +83,27 @@
     :path  "input"
     :inner ["Group"
             "Search"
-            "TextArea"]}
+            "TextArea"]
+    :suffix "(js/goog.exportSymbol \"Input\" ant-input)
+(.defineProperty js/Object js/Input \"name\" #js {\"value\" \"Input\"})
+(set! syn-antd.input/input (reagent.core/adapt-react-class js/Input))
+
+(js/goog.exportSymbol \"TextArea\" (.-TextArea ant-input))
+(.defineProperty js/Object js/TextArea \"name\" #js {\"value\" \"TextArea\"})
+(set! syn-antd.input/input-text-area (reagent.core/adapt-react-class js/TextArea))
+
+(js/goog.exportSymbol \"Search\" (.-Search ant-input))
+(.defineProperty js/Object js/Search \"name\" #js {\"value\" \"Search\"})
+(set! syn-antd.input/input-search (reagent.core/adapt-react-class js/Search))
+
+(set! reagent.impl.template/input-component?
+      (fn [x]
+        (or (= x \"input\")
+            (= x \"textarea\")
+            (= (reagent.interop/$ x :name) \"TextArea\")
+            (= (reagent.interop/$ x :name) \"Input\")
+            (= (reagent.interop/$ x :name) \"AutoComplete\")
+            (= (reagent.interop/$ x :name) \"Search\"))))"}
    {:class "InputNumber"
     :path  "input-number"}
    {:class "Layout"
