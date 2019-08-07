@@ -1,11 +1,11 @@
-(defproject syn-antd "1.1.1-1"
+(defproject syn-antd "1.1.2"
   :description "Ant Design Reagent Wrapper - Optimised for shadow-cljs"
   :min-lein-version "2.7.0"
   :url "https://gitlab.com/synqrinus/syn-antd"
   :license {:name "MIT License"
             :url  "https://opensource.org/licenses/MIT"}
 
-  :dependencies [[org.clojure/clojure "1.10.0" :scope "provided"]]
+  :dependencies [[org.clojure/clojure "1.10.1" :scope "provided"]]
 
   :source-paths ["src"]
   :clean-targets ^{:protect false} ["target"]

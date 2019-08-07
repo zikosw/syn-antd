@@ -22,7 +22,7 @@
     :path  "badge"}
    {:class "Breadcrumb"
     :path  "breadcrumb"
-    :inner ["Item"]}
+    :inner ["Item" "Separator"]}
    {:class "Button"
     :path  "button"
     :inner ["Group"]}
@@ -53,6 +53,9 @@
     :inner ["MonthPicker"
             "RangePicker"
             "WeekPicker"]}
+   {:class "Descriptions"
+    :path  "descriptions"
+    :inner ["Item"]}
    {:class "Divider"
     :path  "divider"}
    {:class "Drawer"
@@ -84,11 +87,14 @@
     :path  "list"
     :inner ["Item"
             ["Item" "Meta"]]}
-   {:class "LocaleProvider"
+   {:class "LocaleProvider"                                 ;; DEPRECATED
     :path  "locale-provider"}
-   {:class "Mention"
+   {:class "Mention"                                        ;; DEPRECATED
     :path  "mention"
     :inner ["Nav"]}
+   {:class "Mentions"
+    :path  "mentions"
+    :inner ["Option"]}
    {:class "Menu"
     :path  "menu"
     :inner ["Divider"
@@ -139,6 +145,8 @@
             "Group"]}
    {:class "Rate"
     :path  "rate"}
+   {:class "Result"
+    :path  "result"}
    {:class "Row"
     :path  "row"}
    {:class  "Select"

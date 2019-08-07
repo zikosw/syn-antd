@@ -1,3 +1,6 @@
+# 1.1.2
+- Support new features added between antd 3.15.0 to 3.21.0
+
 # 1.1.1-1
 
 - Undo changes from `1.1.1`
