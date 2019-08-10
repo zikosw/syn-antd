@@ -5,4 +5,4 @@
 
 (def form (reagent.core/adapt-react-class ant-form))
 
-(def form-form-item (reagent.core/adapt-react-class (.-Form.Item ant-form)))
+(def form-item (reagent.core/adapt-react-class (.-Item ant-form)))

@@ -1,3 +1,7 @@
+# 1.2.0
+- Fixed `syn-antd.form` not loading due to broken link | BREAKING: `syn-antd.form/form-form-item` must be renamed to `syn-antd.form/form-item`
+- Added `syn-antd.input/input-password`
+
 # 1.1.2
 - Support new features added between antd 3.15.0 to 3.21.0
 

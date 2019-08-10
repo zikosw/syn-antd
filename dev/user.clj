@@ -67,12 +67,13 @@
     :path  "empty"}
    {:class "Form"
     :path  "form"
-    :inner ["Form.Item"]}
+    :inner ["Item"]}
    {:class "Icon"
     :path  "icon"}
    {:class "Input"
     :path  "input"
     :inner ["Group"
+            "Password"
             "Search"
             "TextArea"]}
    {:class "InputNumber"

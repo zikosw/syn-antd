@@ -7,6 +7,8 @@
 
 (def input-group (reagent.core/adapt-react-class (.-Group ant-input)))
 
+(def input-password (reagent.core/adapt-react-class (.-Password ant-input)))
+
 (def input-search (reagent.core/adapt-react-class (.-Search ant-input)))
 
 (def input-text-area (reagent.core/adapt-react-class (.-TextArea ant-input)))
