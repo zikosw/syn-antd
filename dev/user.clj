@@ -75,7 +75,21 @@
     :inner ["Group"
             "Password"
             "Search"
-            "TextArea"]}
+            "TextArea"]
+    :suffix "(defn r-input [element]
+  (let [input-element (atom nil)]
+    (reagent.core/create-class
+      {:component-will-update
+       (fn [_ [_ new-element]]
+         (when @input-element
+           (.setState @input-element (js-obj \"value\" (:value new-element)))))
+
+       :reagent-render
+       (fn [{:keys [input-type]
+             :as   element
+             :or   {input-type input}}]
+         [input-type
+          (assoc element :ref (fn [t] (reset! input-element t)))])})))"}
    {:class "InputNumber"
     :path  "input-number"}
    {:class "Layout"
