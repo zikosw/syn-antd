@@ -1,0 +1,1 @@
+{"version":3,"sources":["syn_antd/col.cljs"],"mappings":";;;;AAKA,AAAKA,AAAI,AAACC,AAA+BC","names":["syn-antd.col/col","reagent.core/adapt-react-class","js/module$node_modules$antd$es$col$index.default"],"sourcesContent":["(ns syn-antd.col\n  (:require\n    [reagent.core]\n    [\"antd/es/col\" :default ant-col]))\n\n(def col (reagent.core/adapt-react-class ant-col))"]}

@@ -1,0 +1,17 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["dev" "src"]
+
+ :dependencies
+ [[reagent "0.9.0-rc1"]
+  [re-frame "0.11.0-rc1"]]
+
+ :builds
+ {:test-page {:target     :browser
+              :output-dir "resources/public/js/compiled"
+              :asset-path "js/compiled"
+              :modules    {:test-page {:init-fn syn-antd.test-page/init!}}
+              :devtools   {:http-root  "resources/public"
+                           :http-port  3449
+                           :watch-dir  "resources/public"}
+              }}}

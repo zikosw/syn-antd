@@ -21,3 +21,6 @@ pom.xml.asc
 .hg/
 
 *.css
+
+resources/js/compiled/cljs-runtime
+manifest.edn

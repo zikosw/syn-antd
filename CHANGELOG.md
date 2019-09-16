@@ -1,3 +1,7 @@
+# 1.3.0
+- Removed `syn-antd.input/r-input`. Add custom wrapper to handle sync/async problems
+- Add demo test pages
+
 # 1.2.1
 - Added `syn-antd.input/r-input` to handle bug between reagent and syn-antd's usage of react.
 

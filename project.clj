@@ -1,4 +1,4 @@
-(defproject syn-antd "1.2.1"
+(defproject syn-antd "1.3.0-SNAPSHOT"
   :description "Ant Design Reagent Wrapper - Optimised for shadow-cljs"
   :min-lein-version "2.7.0"
   :url "https://gitlab.com/synqrinus/syn-antd"
@@ -15,5 +15,9 @@
                    :jvm-opts     ["-XX:-OmitStackTraceInFastThrow"]
                    :dependencies [[thheller/shadow-cljs "2.8.14"]
                                   [org.clojure/tools.namespace "0.3.0-alpha4"]
-                                  [org.clojure/tools.nrepl "0.2.13"]]
+                                  [org.clojure/tools.nrepl "0.2.13"]
+
+                                  ;; For code completion in cursive, managed by shadow-cljs.edn
+                                  [reagent "0.9.0-rc1"]
+                                  [re-frame "0.11.0-rc1"]]
                    :repl-options {:init-ns user}}})

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"goog.net.xpc.crosspagechannelrole.js",
+"lineCount":3,
+"mappings":"AAmBAA,IAAAC,QAAA,CAAa,mCAAb,CAAA;AAOA,sBAAAD,IAAAE,IAAAC,IAAAC,qBAAA,GAAoC,CAClCC,MAAO,CAD2B,EAElCC,MAAO,CAF2B,CAApC;;",
+"sources":["goog/net/xpc/crosspagechannelrole.js"],
+"sourcesContent":["// Copyright 2007 The Closure Library Authors. All Rights Reserved.\n//\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//      http://www.apache.org/licenses/LICENSE-2.0\n//\n// Unless required by applicable law or agreed to in writing, software\n// distributed under the License is distributed on an \"AS-IS\" BASIS,\n// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for the specific language governing permissions and\n// limitations under the License.\n\n/**\n * @fileoverview Provides the enum for the role of the CrossPageChannel.\n *\n */\n\ngoog.provide('goog.net.xpc.CrossPageChannelRole');\n\n\n/**\n * The role of the peer.\n * @enum {number}\n */\ngoog.net.xpc.CrossPageChannelRole = {\n  OUTER: 0,\n  INNER: 1\n};\n"],
+"names":["goog","provide","net","xpc","CrossPageChannelRole","OUTER","INNER"]
+}

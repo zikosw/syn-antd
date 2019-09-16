@@ -1,0 +1,1 @@
+{"version":3,"sources":["syn_antd/icon.cljs"],"mappings":";;;;AAKA,AAAKA,AAAK,AAACC,AAA+BC","names":["syn-antd.icon/icon","reagent.core/adapt-react-class","js/module$node_modules$antd$es$icon$index.default"],"sourcesContent":["(ns syn-antd.icon\n  (:require\n    [reagent.core]\n    [\"antd/es/icon\" :default ant-icon]))\n\n(def icon (reagent.core/adapt-react-class ant-icon))"]}

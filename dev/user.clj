@@ -10,10 +10,11 @@
    {:class "Anchor"
     :path  "anchor"
     :inner ["Link"]}
-   {:class "AutoComplete"
-    :path  "auto-complete"
-    :inner ["OptGroup"
-            "Option"]}
+   {:class  "AutoComplete"
+    :path   "auto-complete"
+    :input? true
+    :inner  ["OptGroup"
+             "Option"]}
    {:class "Avatar"
     :path  "avatar"}
    {:class "BackTop"
@@ -70,26 +71,17 @@
     :inner ["Item"]}
    {:class "Icon"
     :path  "icon"}
-   {:class "Input"
-    :path  "input"
-    :inner ["Group"
-            "Password"
-            "Search"
-            "TextArea"]
-    :suffix "(defn r-input [element]
-  (let [input-element (atom nil)]
-    (reagent.core/create-class
-      {:component-will-update
-       (fn [_ [_ new-element]]
-         (when @input-element
-           (.setState @input-element (js-obj \"value\" (:value new-element)))))
-
-       :reagent-render
-       (fn [{:keys [input-type]
-             :as   element
-             :or   {input-type input}}]
-         [input-type
-          (assoc element :ref (fn [t] (reset! input-element t)))])})))"}
+   {:class  "Input"
+    :path   "input"
+    :input? true
+    :inner  [{:id     "Group"
+              :input? true}
+             {:id     "Password"
+              :input? true}
+             {:id     "Search"
+              :input? true}
+             {:id     "TextArea"
+              :input? true}]}
    {:class "InputNumber"
     :path  "input-number"}
    {:class "Layout"
@@ -245,41 +237,54 @@
 (defn define-fn [f]
   (str "(defn " (get-symbol-name f) " [& args] (apply " f " args))"))
 
-(defn define-reagent-component [component class-name]
-  (str "(def " (get-symbol-name component) " (reagent.core/adapt-react-class " class-name "))"))
+(defn define-reagent-component [component class-name input?]
+  (str "(def " (get-symbol-name component)
+       (when input? " (syn-antd.reagent-utils/fixed-async-input")
+       " (reagent.core/adapt-react-class " class-name "))"
+       (when input? ")")))
 
-(defn factory-ns-shadow [class path default-name rest-of-file reagent?]
+(defn factory-ns-shadow [class path default-name rest-of-file reagent? input?]
   (str "(ns syn-antd." (module-name->kebab-case class) "\n"
        "  (:require\n"
        (when reagent? "    [reagent.core]\n")
+       (when input? "    [syn-antd.reagent-utils]\n")
        "    [\"" path "\" :default " default-name "]))\n\n"
        rest-of-file))
 
 (defn innerify [base [s & rest-s]]
   (if s
-    (innerify (str "(.-" s " " base ")")
-             rest-s)
+    (let [id (if (map? s)
+               (:id s)
+               s)]
+      (innerify (str "(.-" id " " base ")")
+                rest-s))
     base))
 
 ;; Inspiration taken from https://github.com/fulcrologic/semantic-ui-wrapper
 (defn gen-factories! []
-  (doseq [{:keys [class path inner fns suffix]} ant]
+  (doseq [{:keys [class path inner fns suffix input?]
+           :or   {input? false}} ant]
     (let [filename  (str "src/syn_antd/" (module-name->snake-case (or class path)) ".cljs")
           default   (default-name (or class path))
           file-body (string/join
                       "\n\n"
                       (concat
                         (when (some? class)
-                          [(define-reagent-component class default)])
+                          [(define-reagent-component class default input?)])
                         (when (some? inner)
-                          (map #(define-reagent-component (str class "." %)
-                                                          (if (coll? %)
-                                                            (innerify default %)
-                                                            (innerify default [%]))) inner))
+                          (map (fn [entry]
+                                 (let [id (if (map? entry)
+                                            (:id entry)
+                                            entry)]
+                                   (define-reagent-component (str class "." id)
+                                                             (if (sequential? entry)
+                                                               (innerify default entry)
+                                                               (innerify default [entry]))
+                                                             input?))) inner))
                         (when (some? fns)
                           (map define-fn fns))
                         (when (some? suffix)
                           [suffix])))]
       (make-parents filename)
       (spit (as-file filename)
-            (factory-ns-shadow (or class path) (str "antd/es/" path) default file-body (some? class))))))
+            (factory-ns-shadow (or class path) (str "antd/es/" path) default file-body (some? class) input?)))))
