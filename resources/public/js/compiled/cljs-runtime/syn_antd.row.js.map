@@ -1,1 +1,0 @@
-{"version":3,"sources":["syn_antd/row.cljs"],"mappings":";;;;AAKA,AAAKA,AAAI,AAACC,AAA+BC","names":["syn-antd.row/row","reagent.core/adapt-react-class","js/module$node_modules$antd$es$row$index.default"],"sourcesContent":["(ns syn-antd.row\n  (:require\n    [reagent.core]\n    [\"antd/es/row\" :default ant-row]))\n\n(def row (reagent.core/adapt-react-class ant-row))"]}

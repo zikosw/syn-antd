@@ -22,5 +22,5 @@ pom.xml.asc
 
 *.css
 
-resources/js/compiled/cljs-runtime
+resources/public/js/compiled/cljs-runtime
 manifest.edn
