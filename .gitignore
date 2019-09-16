@@ -20,7 +20,5 @@ pom.xml.asc
 .hgignore
 .hg/
 
-*.css
-
 resources/public/js/compiled/cljs-runtime
 manifest.edn
