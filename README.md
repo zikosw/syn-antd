@@ -4,6 +4,8 @@
 
 A [shadow-cljs](http://shadow-cljs.org/) friendly [reagent](https://github.com/reagent-project/reagent) wrapper around [Ant Design](https://ant.design/docs/react/introduce) components.
 
+[Demo pages](https://synqrinus.gitlab.io/syn-antd)
+
 ## Purpose
 
 Using cljsjs antd leads to bloated compiled JS file since antd is a very large library with many UI components, of which you likely only need a subset.
