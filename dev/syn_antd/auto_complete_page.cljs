@@ -1,9 +1,9 @@
 (ns syn-antd.auto-complete-page
-  (:require [syn-antd.alert :as alert]
-            [syn-antd.button :as button]
-            [syn-antd.auto-complete :as auto-complete]
-            [syn-antd.dev :as dev]
-            [re-frame.core :as re-frame])
+  (:require
+    [syn-antd.button :as button]
+    [syn-antd.auto-complete :as auto-complete]
+    [syn-antd.dev :as dev]
+    [re-frame.core :as re-frame])
   (:require-macros [syn-antd.util :refer [source]]))
 
 (defn basic-auto-complete-element []
@@ -56,10 +56,7 @@
     {:title      "syn-antd.auto-complete"
      :link       "https://ant.design/components/auto-complete/"
      :link-title "antd Documentation - AutoComplete"
-     :alerts     [alert/alert
-                  {:type        "info"
-                   :message     "Note for re-frame use"
-                   :description "Very fast typing, or slow rendering, can cause cursor jumping when managing input field state via re-frame. To avoid this, you have to synchronously trigger re-frame events, i.e. re-frame/dispatch-sync instead of re-frame/dispatch. See code below for examples"}]
+     :alerts     [dev/re-frame-input-alert]
      :elements   [:<>
                   [basic-auto-complete]
                   [controlled-rf-auto-complete]

@@ -1,14 +1,15 @@
 (ns syn-antd.test-page
-  (:require [re-frame.core :as re-frame]
-            [reagent.core :as reagent]
+  (:require
+    [re-frame.core :as re-frame]
+    [reagent.core :as reagent]
 
-            [syn-antd.input-shim]
-            [syn-antd.layout :as layout]
-            [syn-antd.menu :as menu]
+    [syn-antd.layout :as layout]
+    [syn-antd.menu :as menu]
 
-            [syn-antd.auto-complete-page :as auto-complete-page]
-            [syn-antd.input-page :as input-page]
-            [syn-antd.input-number-page :as input-number-page]))
+    ;; Demo pages
+    [syn-antd.auto-complete-page :as auto-complete-page]
+    [syn-antd.input-page :as input-page]
+    [syn-antd.input-number-page :as input-number-page]))
 
 (re-frame/reg-sub ::active-page (fn [db _] (::active-page db)))
 

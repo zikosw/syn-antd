@@ -33,7 +33,8 @@
                               "Hide source"
                               "Show source")}
                     [icon/icon {:type     "code"
-                                :on-click #(swap! show-code? not)}]])]}
+                                :on-click #(swap! show-code? not)}]])]
+       :style {:margin "8px 0px"}}
       body
       (when @show-code?
         [code-block source-code])]]))
@@ -56,3 +57,8 @@
     {:gutter 16}
     elements]])
 
+(defn re-frame-input-alert []
+  [alert/alert
+   {:type        "info"
+    :message     "Note for re-frame use"
+    :description "Very fast typing, or slow rendering, can cause cursor jumping when managing input field state via re-frame. To avoid this, you have to synchronously trigger re-frame events, i.e. re-frame/dispatch-sync instead of re-frame/dispatch. See code below for examples"}])

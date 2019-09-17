@@ -1,8 +1,9 @@
 (ns syn-antd.input-number-page
-  (:require [syn-antd.button :as button]
-            [syn-antd.input-number :as input-number]
-            [syn-antd.dev :as dev]
-            [re-frame.core :as re-frame])
+  (:require
+    [syn-antd.button :as button]
+    [syn-antd.input-number :as input-number]
+    [syn-antd.dev :as dev]
+    [re-frame.core :as re-frame])
   (:require-macros [syn-antd.util :refer [source]]))
 
 (defn controlled-rf-input-number-element []

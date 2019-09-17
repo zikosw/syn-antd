@@ -3,6 +3,6 @@
     "antd": "3.23.2",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "react-syntax-highlighter": "^11.0.2"
+    "react-syntax-highlighter": "11.0.2"
   }
 }

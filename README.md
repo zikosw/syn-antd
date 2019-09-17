@@ -21,6 +21,10 @@ CAVEAT: antd-icons is still a gigantic mess that's completely required in. This 
 3. Make sure you reference the appropriate antd css file somewhere in your HTML
 4. Reference the namespace you need and use as a standard Reagent component
 
+### Using with re-frame
+
+Very fast typing, or slow rendering, can cause cursor jumping when managing input field state via re-frame. To avoid this, you have to synchronously trigger re-frame events, i.e. `re-frame/dispatch-sync` instead of `re-frame/dispatch`.
+
 ## Some syn-antd unique features
 
 ### ant-options

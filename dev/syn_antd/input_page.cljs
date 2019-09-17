@@ -1,9 +1,9 @@
 (ns syn-antd.input-page
-  (:require [syn-antd.alert :as alert]
-            [syn-antd.button :as button]
-            [syn-antd.input :as input]
-            [syn-antd.dev :as dev]
-            [re-frame.core :as re-frame])
+  (:require
+    [syn-antd.button :as button]
+    [syn-antd.input :as input]
+    [syn-antd.dev :as dev]
+    [re-frame.core :as re-frame])
   (:require-macros [syn-antd.util :refer [source]]))
 
 (defn event-value [e]
@@ -104,20 +104,17 @@
 ;; PAGE
 (defn test-input-page []
   (dev/demo-page
-    {:title "syn-antd.input"
-     :link "https://ant.design/components/input/"
+    {:title      "syn-antd.input"
+     :link       "https://ant.design/components/input/"
      :link-title "antd Documentation - Input"
-     :alerts [alert/alert
-              {:type "info"
-               :message "Note for re-frame use"
-               :description "Very fast typing, or slow rendering, can cause cursor jumping when managing input field state via re-frame. To avoid this, you have to synchronously trigger re-frame events, i.e. re-frame/dispatch-sync instead of re-frame/dispatch. See code below for examples"}]
-     :elements [:<>
-                [basic-input]
-                [controlled-rf-input]
-                [controlled-rf-input2]
-                [controlled-rf-password-input]
-                [controlled-rf-search-input]
-                [controlled-rf-text-area-input]]}))
+     :alerts     [dev/re-frame-input-alert]
+     :elements   [:<>
+                  [basic-input]
+                  [controlled-rf-input]
+                  [controlled-rf-input2]
+                  [controlled-rf-password-input]
+                  [controlled-rf-search-input]
+                  [controlled-rf-text-area-input]]}))
 
 
 ;; RE FRAME STUFFS
